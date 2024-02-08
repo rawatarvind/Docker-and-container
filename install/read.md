@@ -110,6 +110,9 @@ Images, containers, volumes, or custom configuration files on your host aren't a
 sudo rm -rf /var/lib/docker
 sudo rm -rf /var/lib/containerd
 
+if you want give access to user.
+
+# sudo chmod -a -G docker $username
 
 
 
