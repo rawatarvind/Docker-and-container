@@ -1,0 +1,60 @@
+#####Docker Compose#####
+
+this method is used to automate provisioning of  containers.
+# curl -L "https://github.com/docker/compose/releases/download/1.27.4/docker-compose-$(uname -s)-$(uname -m)" -o /bin/docker-
+compose
+# mkdir test
+# cd test
+# vi docker-compose.yaml
+version: '3'
+services:
+     web: 
+       image: nginx
+       ports:
+        - 8080:80
+wq!
+# docker compose up -d 
+# dokcer compose ps
+          or
+# docker ps 
+# docker compose rm containername
+
+# mkdir wordpress
+# cd wordpress
+# mkdir db_data
+# vi docker-compose.yaml
+version: '3'
+
+services:
+  db:
+    image: mysql:5.7
+    volumes:
+      - db_data:/var/lib/mysql
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: somewordpress
+      MYSQL_DATABASE: wordpress
+      MYSQL_USER: wordpress
+      MYSQL_PASSWORD: wordpress
+
+  wordpress:
+    depends_on:
+      - db
+    image: wordpress:latest
+    ports:
+      - "9090:80"
+    restart: always
+    environment:
+      WORDPRESS_DB_HOST: db:3306
+      WORDPRESS_DB_USER: wordpress
+      WORDPRESS_DB_PASSWORD: wordpress
+      WORDPRESS_DB_NAME: wordpress
+
+volumes:
+  db_data: {}
+
+:wq!
+# docker ps
+# curl localhost:9090
+  
+  
