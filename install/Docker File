@@ -18,3 +18,59 @@ Below are the docker parameters.
 11. USER: Default conatiner namespace ownership user and login user also when access container.
 Note: If using CMD and Entrypoint both, entrypoint will have priority.
 
+# mkdir test
+# cd test
+# echo hellword > run.sh
+# vim Dockerfile
+
+FORM centos:7
+MAINTAINER arvindrawat
+RUN yum install httpd -y
+ADD https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm /tmp
+COPY run.sh /tmp
+
+:wq
+
+# docker build -t centos:apache
+# docker images
+# docker run -itd --name=demo centos:apache
+
+To decrease command history , use below format for RUN parameter.
+
+FROM centos:7
+ENV  a 10
+RUN echo $a > /var/tmp/abc
+ENTERPOINT "abc.sh"
+MAINTAINER ARVIND RAWAT
+RUN yum install httpd -y && echo "helloworld" > /tmp/report && data && cal \
+WORKDIR /var/www/html
+COPY ./src/ && run.sh /tmp
+RUN 'sed -i "s/Listen 8080/Listen 8080/g" /etc/httpd/conf/httpd.conf \
+ && chown -R apache:root /var/log/httpd /var/run/httpd \
+ && chmod -R 777 /var/log/httpd /var/run/httpd
+EXPOSE 8080
+USER apache
+ADD https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm /tmp
+CMD ["/usr/sbin/httpd", "-D", "FORGROUND"] [we can not provision container with -d option without this parameter
+you need to -it option]
+VOLUME /volume
+
+:wq!
+
+# docker build -t apache:latest
+# docker run -d -p  --name=web apache:latest
+# docker exec -it web /bin/bash
+
+bash-4.2$ whoami
+bash-4.2$ pwd
+bash-4.2$ cat /var/tmp/abc
+bash-4.2$ ls
+bash-4.2$ curl 127.0.0.1:8080
+bash-4.2$ exit
+
+# docker ps
+# docker volume ls
+# ls /var/lib/docker/volume
+
+
+
