@@ -3,4 +3,18 @@ There are two way to write the docker file.
 2 automatic ( Declarative )
 
 # How to write Docker file 
+Below are the docker parameters.
+
+1. From: it always contains base image reference to building a new image.
+2. Run: What command you want to execute to provision new images.
+3. Add: You want to copy some files into image. Can download content from internet.
+4. COPY: copy also do same thing like ADD Parameter.Can't download from internet. Only copy from localhost.
+5. Expose: To set default container port to access your application.
+6. WORKDIR: To change the present working directory when login to container first time.
+7. ENV: To store the variable inside the docker file and its limited to docker file only.
+8. CMD: Any process/service daemon which you want to provision the container. we can use multiple time in a single file. If defining multiple time it executes last one.
+9. ENTERPOINT: it is basically to execute shell file on create/booting time of container.Can't call multiple times.
+10. MAINTAINER: Optional parameter (Email, autor name and Department)
+11. USER: Default conatiner namespace ownership user and login user also when access container.
+Note: If using CMD and Entrypoint both, entrypoint will have priority.
 
