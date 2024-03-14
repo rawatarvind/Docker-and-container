@@ -23,7 +23,7 @@ Note: If using CMD and Entrypoint both, entrypoint will have priority.
 # echo hellword > run.sh
 # vim Dockerfile
 
-FORM centos:7
+FROM centos:7
 MAINTAINER arvindrawat
 RUN yum install httpd -y
 ADD https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm /tmp
