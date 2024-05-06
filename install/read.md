@@ -110,6 +110,20 @@ Images, containers, volumes, or custom configuration files on your host aren't a
 sudo rm -rf /var/lib/docker
 sudo rm -rf /var/lib/containerd
 
+# How to change the default path of Docker config.
+
+sudo systemctl stop docker
+
+vi /etc/docker/daemon.json
+And add the following to tell docker to put all its files in this folder, e.g:
+
+{
+  "/var/lib/docker":"/mnt/cryptfs/docker"
+}
+and save.
+
+sudo systemctl start 
+
 if you want give access to user.
 
 # sudo chmod -a -G docker $username
